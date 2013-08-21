@@ -1,0 +1,15 @@
+foo:
+  ROOT_URLCONF: foo.urls
+  SECRET_KEY: 'gith!)on!_dq0=2l(otd67%#0urmrk6_d0!zu)i9fn=!8_g5(c'
+  DATABASES:
+    default:
+      ENGINE: django.db.backends.mysql
+      NAME: foodb
+      USER: foouser
+      PASSWORD: foopass
+      HOST: localhost
+      PORT: 3306
+  TEMPLATE_DIRS:
+    - /home/erik/django/templates
+  STATICFILES_DIRS:
+    - /home/erik/django/templates
