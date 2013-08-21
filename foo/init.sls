@@ -58,8 +58,10 @@ foo_syncdb:
   module:
     - wait
     - name: django.syncdb {{ foo_settings }}
+    - bin_env: {{ foo_venv }}
 
 foo_collectstatic:
   module:
     - wait
     - name: django.collectstatic {{ foo_settings }}
+    - bin_env: {{ foo_venv }}
