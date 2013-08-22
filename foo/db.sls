@@ -17,11 +17,12 @@ foodb_user:
       - mysql_database: foodb
 
 foodb_grants:
-  mysql_grants.present:
-    - grant: all permissions
-      - database: {{ name }}
-      - user: {{ db.get('NAME') }}
-      - host: {{ db.get('HOST') }}
+  mysql_grants:
+    - present
+    - grant: all privileges
+    - database: {{ name }}
+    - user: {{ db.get('NAME') }}
+    - host: {{ db.get('HOST') }}
     - require:
       - mysql_user: foodb_user
 {% endfor %}
