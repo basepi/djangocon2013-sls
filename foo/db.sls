@@ -22,8 +22,9 @@ foodb_user:
 foodb_grants:
   mysql_grants:
     - present
+    - name: {{ name }}
     - grant: all privileges
-    - database: {{ name }}
+    - database: {{ name }}.*
     - user: {{ db.get('NAME') }}
     - host: {{ db.get('HOST') }}
     - require:
