@@ -9,6 +9,7 @@ foodb:
     - name: {{ name }}
     - require:
       - service: mysqld
+      - pkg: mysql-python
 
 foodb_user:
   mysql_user:
