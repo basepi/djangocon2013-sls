@@ -1,5 +1,6 @@
 include:
   - mysql.server
+  - mysql.python
 
 {% for name, db in salt['pillar.get']('foo:DATABASES', {}).items() %}
 foodb:
