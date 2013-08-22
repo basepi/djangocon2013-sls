@@ -61,6 +61,13 @@ foo_settings:
     - source: salt://foo/settings.py
     - template: jinja
 
+foo_wsgi:
+  file:
+    - managed
+    - name: {{ foo_proj }}/wsgi.py
+    - source: salt://foo/wsgi.py
+    - template: jinja
+
 foo_syncdb:
   module:
     - wait
