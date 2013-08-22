@@ -65,7 +65,7 @@ foo_wsgi:
   file:
     - managed
     - name: {{ foo_proj }}/wsgi.py
-    - source: salt://foo/wsgi.py
+    - source: salt://wsgi.py
     - template: jinja
 
 foo_syncdb:
