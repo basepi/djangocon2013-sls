@@ -7,6 +7,8 @@ foodb:
   mysql_database:
     - present
     - name: {{ name }}
+    - require:
+      - service: mysqld
 
 foodb_user:
   mysql_user:
