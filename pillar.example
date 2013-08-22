@@ -1,3 +1,8 @@
+# MySQL connection infos
+connection_user: root
+connection_pass: ''
+
+# Django settings infos
 foo:
   ROOT_URLCONF: foo.urls
   SECRET_KEY: 'gith!)on!_dq0=2l(otd67%#0urmrk6_d0!zu)i9fn=!8_g5(c'
