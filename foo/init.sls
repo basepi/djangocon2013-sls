@@ -64,11 +64,15 @@ foo_settings:
 foo_syncdb:
   module:
     - wait
-    - name: django.syncdb {{ foo_settings }}
+    - name: django.syncdb
+    - kwargs:
+      - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
 
 foo_collectstatic:
   module:
     - wait
-    - name: django.collectstatic {{ foo_settings }}
+    - name: django.collectstatic
+    - kwargs:
+      - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
