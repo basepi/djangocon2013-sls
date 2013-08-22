@@ -57,7 +57,7 @@ foo_pkgs:
 foo_settings:
   file:
     - managed
-    - name: {{ foo_proj }}/settings.py
+    - name: {{ foo_proj }}/foo/settings.py
     - source: salt://foo/settings.py
     - template: jinja
 
