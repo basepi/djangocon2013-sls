@@ -18,6 +18,13 @@ github.com:
     - require:
       - pkg: ssh_server
 
+empty_venv:
+  virtualenv:
+    - managed
+    - name: /var/www/BASELINE
+    - require:
+      - pkg: virtualenv
+
 foo_venv:
   virtualenv:
     - managed
