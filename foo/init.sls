@@ -1,8 +1,8 @@
 # https://github.com/terminalmage/djangocon2013-sls.git
 
-{% set foo_venv = '/var/www/foo' %}
-{% set foo_proj = foo_venv ~ '/django-tutorial' %}
-{% set foo_settings = 'foo.settings' %}
+{% set foo_venv = salt['pillar.get']('foo:venv') %}
+{% set foo_proj = salt['pillar.get']('foo:proj') %}
+{% set foo_settings = salt['pillar.get']('foo:settings') %}
 
 include:
   - git

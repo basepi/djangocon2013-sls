@@ -2,8 +2,16 @@
 connection_user: root
 connection_pass: ''
 
+{% set foo_venv = '/var/www/foo' %}
+{% set foo_proj = foo_venv ~ '/django-tutorial' %}
+{% set foo_tmpl = foo_venv ~ foo_proj ~ '/templates' %}
+{% set foo_static = foo_venv ~ foo_proj ~ '/static' %}
+
 # Django settings infos
 foo:
+  venv: {{ foo_venv }}
+  proj: {{ foo_proj }}
+  settings: foo.settings
   ROOT_URLCONF: foo.urls
   SECRET_KEY: 'gith!)on!_dq0=2l(otd67%#0urmrk6_d0!zu)i9fn=!8_g5(c'
   DATABASES:
@@ -15,6 +23,6 @@ foo:
       HOST: localhost
       PORT: 3306
   TEMPLATE_DIRS:
-    - /home/erik/django/templates
+    - {{ foo_tmpl }}
   STATICFILES_DIRS:
-    - /home/erik/django/templates
+    - {{ foo_static }}
