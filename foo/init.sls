@@ -83,14 +83,12 @@ foo_syncdb:
   module:
     - wait
     - name: django.syncdb
-    - kwargs:
-      - settings_module: {{ foo_settings }}
+    - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
 
 foo_collectstatic:
   module:
     - wait
     - name: django.collectstatic
-    - kwargs:
-      - settings_module: {{ foo_settings }}
+    - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
