@@ -15,6 +15,9 @@ framework.
 """
 import os
 import site
+import sys
+
+sys.path.append('{{ salt['pillar.get']('foo:proj') }}')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ salt['pillar.get']('foo:settings') }}")
 
