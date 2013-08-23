@@ -6,7 +6,7 @@ include:
 foodb:
   mysql_database:
     - present
-    - name: {{ name }}
+    - name: {{ db.get('NAME') }}
     - require:
       - service: mysqld
       - pkg: mysql-python
@@ -23,10 +23,9 @@ foodb_user:
 foodb_grants:
   mysql_grants:
     - present
-    - name: {{ name }}
     - grant: all privileges
-    - database: {{ name }}.*
-    - user: {{ db.get('NAME') }}
+    - database: {{ db.get('NAME') }}.*
+    - user: {{ db.get('USER') }}
     - host: {{ db.get('HOST') }}
     - require:
       - mysql_user: foodb_user
