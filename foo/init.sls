@@ -29,6 +29,7 @@ foo_venv:
   virtualenv:
     - managed
     - name: {{ foo_venv }}
+    - system_site_packages: True
     - require:
       - pkg: virtualenv
 
