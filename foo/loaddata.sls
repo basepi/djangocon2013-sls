@@ -18,6 +18,7 @@ foo_pth:
 foo_loaddata:
   cmd:
     - run
-    - name: sleep 3; {{ foo_venv }}/bin/django-admin.py loaddata --settings=foo.settings {{ foo_proj }}/foo/fixtures/foo.json
+    - name: {{ foo_venv }}/bin/django-admin.py loaddata --settings=foo.settings {{ foo_proj }}/foo/fixtures/foo.json
     - require:
       - file: foo_pth
+      - file: foo_settings
