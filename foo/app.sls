@@ -6,6 +6,7 @@ include:
   - git
   - pip
   - ssh.server
+  - virtualenv
 
 github.com:
   ssh_known_hosts:
@@ -14,6 +15,21 @@ github.com:
     - fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
     - require:
       - pkg: ssh_server
+
+empty_venv:
+  virtualenv:
+    - managed
+    - name: /var/www/BASELINE
+    - require:
+      - pkg: virtualenv
+
+foo_venv:
+  virtualenv:
+    - managed
+    - name: {{ foo_venv }}
+    - system_site_packages: True
+    - require:
+      - pkg: virtualenv
 
 foo:
   git.latest:
@@ -36,6 +52,13 @@ foo_pkgs:
       - git: foo
       - pkg: pip
       - virtualenv: foo_venv
+
+foo_settings:
+  file:
+    - managed
+    - name: {{ foo_proj }}/foo/settings.py
+    - source: salt://foo/files/settings.py
+    - template: jinja
 
 foo_wsgi:
   file:
