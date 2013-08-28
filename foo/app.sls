@@ -39,7 +39,6 @@ foo:
     - require:
       - pkg: git
       - ssh_known_hosts: github.com
-      - file: foo_pth
     - watch_in:
       - module: foo_syncdb
       - module: foo_collectstatic
