@@ -31,14 +31,6 @@ foo_venv:
     - require:
       - pkg: virtualenv
 
-foo_pth:
-  file:
-    - managed
-    - name: {{ salt['virtualenv.get_site_packages'](foo_venv) }}/foo.pth
-    - contents: {{ foo_proj }}
-    - require:
-      - virtualenv: foo_venv
-
 foo:
   git.latest:
     - name: https://github.com/terminalmage/django-tutorial.git
