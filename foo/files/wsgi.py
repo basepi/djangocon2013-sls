@@ -21,6 +21,13 @@ sys.path.append('{{ salt['pillar.get']('foo:proj') }}')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ salt['pillar.get']('foo:settings') }}")
 
+{% set foo_sitepackages = salt['cmd.exec_code'](
+    salt['pillar.get']('foo:venv') ~ '/bin/python',
+    'from distutils import sysconfig; print sysconfig.get_python_lib()'
+) %}
+
+site.addsitedir('{{ foo_sitepackages }}')
+
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
