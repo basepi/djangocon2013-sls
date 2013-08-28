@@ -1,3 +1,5 @@
+{% set foo_proj = salt['pillar.get']('foo:proj') %}
+
 foo_settings:
   file:
     - managed
