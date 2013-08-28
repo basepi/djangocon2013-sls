@@ -19,15 +19,3 @@ foo_venv:
     - require:
       - pkg: virtualenv
 
-{% set foo_sitepackages = salt['cmd.exec_code'](
-    salt['pillar.get']('foo:venv') ~ '/bin/python',
-    'from distutils import sysconfig; print sysconfig.get_python_lib()'
-) %}
-
-foo_pth:
-  file:
-    - managed
-    - name: {{ foo_sitepackages }}/foo.pth
-    - contents: {{ foo_proj }}
-    - require:
-      - virtualenv: foo_venv
