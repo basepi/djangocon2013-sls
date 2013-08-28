@@ -43,3 +43,17 @@ foo_wsgi:
     - name: {{ foo_proj }}/foo/wsgi.py
     - source: salt://foo/files/wsgi.py
     - template: jinja
+
+foo_syncdb:
+  module:
+    - wait
+    - name: django.syncdb
+    - settings_module: {{ foo_settings }}
+    - bin_env: {{ foo_venv }}
+
+foo_collectstatic:
+  module:
+    - wait
+    - name: django.collectstatic
+    - settings_module: {{ foo_settings }}
+    - bin_env: {{ foo_venv }}
