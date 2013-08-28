@@ -1,5 +1,3 @@
-# https://github.com/terminalmage/djangocon2013-sls.git
-
 {% set foo_venv = salt['pillar.get']('foo:venv') %}
 {% set foo_proj = salt['pillar.get']('foo:proj') %}
 {% set foo_settings = salt['pillar.get']('foo:settings') %}
@@ -8,7 +6,7 @@ include:
   - git
   - pip
   - ssh.server
-  - virtualenv
+  - foo.virtualenv
 
 github.com:
   ssh_known_hosts:
@@ -17,21 +15,6 @@ github.com:
     - fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
     - require:
       - pkg: ssh_server
-
-empty_venv:
-  virtualenv:
-    - managed
-    - name: /var/www/BASELINE
-    - require:
-      - pkg: virtualenv
-
-foo_venv:
-  virtualenv:
-    - managed
-    - name: {{ foo_venv }}
-    - system_site_packages: True
-    - require:
-      - pkg: virtualenv
 
 foo:
   git.latest:
@@ -54,16 +37,6 @@ foo_pkgs:
       - git: foo
       - pkg: pip
       - virtualenv: foo_venv
-
-{% set foo_sitepackages = salt['cmd.exec_code'](
-    salt['pillar.get']('foo:venv') ~ '/bin/python',
-    'from distutils import sysconfig; print sysconfig.get_python_lib()') %}
-
-foo_pth:
-  file:
-    - managed
-    - name: {{ foo_sitepackages }}/foo.pth
-    - contents: {{ foo_proj }}
 
 foo_settings:
   file:
