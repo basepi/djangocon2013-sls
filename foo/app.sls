@@ -55,6 +55,16 @@ foo_pkgs:
       - pkg: pip
       - virtualenv: foo_venv
 
+{% set foo_sitepackages = salt['cmd.exec_code'](
+    salt['pillar.get']('foo:venv') ~ '/bin/python',
+    'from distutils import sysconfig; print sysconfig.get_python_lib()') %}
+
+foo_pth:
+  file:
+    - managed
+    - name: {{ foo_sitepackages }}/foo.pth
+    - contents: {{ foo_proj }}
+
 foo_settings:
   file:
     - managed
