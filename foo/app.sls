@@ -6,7 +6,6 @@ include:
   - git
   - pip
   - ssh.server
-  - foo.virtualenv
 
 github.com:
   ssh_known_hosts:
@@ -38,18 +37,11 @@ foo_pkgs:
       - pkg: pip
       - virtualenv: foo_venv
 
-foo_settings:
-  file:
-    - managed
-    - name: {{ foo_proj }}/foo/settings.py
-    - source: salt://foo/settings.py
-    - template: jinja
-
 foo_wsgi:
   file:
     - managed
     - name: {{ foo_proj }}/foo/wsgi.py
-    - source: salt://foo/wsgi.py
+    - source: salt://foo/files/wsgi.py
     - template: jinja
 
 foo_syncdb:
