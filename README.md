@@ -10,6 +10,7 @@ Salt 0.16.3 or greater
 
 Salt Formula
 
+* apache
 * git
 * pip
 * ssh

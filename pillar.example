@@ -27,9 +27,9 @@ foo:
   STATICFILES_DIRS:
     - {{ foo_static }}
 
-dirmap:
-{% if grains['os'] == 'CentOS' %}
-  etcapache: /etc/httpd
-{% elif grains['os'] == 'Ubuntu' %}
-  etcapache: /etc/apache2
-{% endif %}
+apache:
+  sites:
+    example.com:
+      DocumentRoot: {{ foo_tmpl }}
+      Formula_Append: |
+        WSGIScriptAlias / {{ '{0}/foo/wsgi.py'.format(foo_proj) }}
