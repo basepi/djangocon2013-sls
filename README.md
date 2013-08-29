@@ -6,7 +6,9 @@ This repository contains the SLS files for the 'Using SaltStack to Bootstrap Dja
 Requirements
 ------------
 
-Salt 0.16.3 or greater
+Requires the latest
+[grains module](https://raw.github.com/saltstack/salt/develop/salt/modules/grains.py)
+(place in `/srv/salt/_modules`)
 
 Salt Formula
 
