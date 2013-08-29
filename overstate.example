@@ -1,0 +1,28 @@
+sync_mod:
+  match: 'djdemo-*'
+  function:
+    saltutil.sync_modules
+
+mysql:
+  match: 'djdemo-db*'
+  require:
+    - sync_mod
+  sls:
+    - foo.db
+
+app:
+  match: 'djdemo-app*'
+  require:
+    - mysql
+  sls:
+    - foo
+    - apache.vhosts.standard
+    - apache.mod_wsgi
+    - apache.config
+
+load_db:
+  match: 'djdemo-app*'
+  require:
+    - app
+  sls:
+    - foo.loaddata
