@@ -12,7 +12,6 @@ Requires the latest
 
 Salt Formula
 
-* apache
 * git
 * pip
 * ssh
