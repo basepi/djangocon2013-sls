@@ -26,3 +26,4 @@ foo:
     - {{ foo_tmpl }}
   STATICFILES_DIRS:
     - {{ foo_static }}
+  STATIC_ROOT: {{ foo_proj }}/staticroot
