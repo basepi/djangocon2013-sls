@@ -17,9 +17,6 @@ app:
   sls:
     - foo.vhost
     - foo.app
-{% if grains['os'] == 'CentOS' %}
-    - foo.firewall
-{% endif %}
 
 load_db:
   match: 'web*'

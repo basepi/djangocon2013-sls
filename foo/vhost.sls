@@ -3,6 +3,9 @@
 include:
   - apache
   - apache.mod_wsgi
+{% if grains['os'] == 'CentOS' %}
+  - foo.firewall
+{% endif %}
 
 foo-vhost:
   file:
