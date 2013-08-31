@@ -1,0 +1,12 @@
+{% set ssh = {
+    'Debian': {
+        'service': 'ssh',
+        'server': 'openssh-server',
+        'client': 'openssh-client',
+    },
+    'RedHat': {
+        'service': 'sshd',
+        'server': 'openssh-server',
+        'client': 'openssh',
+    },
+}.get(grains.os_family) %}
