@@ -77,6 +77,7 @@ foo_syncdb:
     - name: django.syncdb
     - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
+    - pythonpath: {{ foo_proj }}
 
 foo_collectstatic:
   module:
@@ -84,3 +85,4 @@ foo_collectstatic:
     - name: django.collectstatic
     - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
+    - pythonpath: {{ foo_proj }}
