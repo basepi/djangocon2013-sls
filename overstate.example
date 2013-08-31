@@ -1,27 +1,28 @@
 sync_mod:
-  match: 'djdemo-*'
+  match: 'web*'
   function:
     saltutil.sync_modules
 
 mysql:
-  match: 'djdemo-db*'
+  match: 'web*'
   require:
     - sync_mod
   sls:
     - foo.db
 
 app:
-  match: 'djdemo-app*'
+  match: 'web*'
   require:
     - mysql
   sls:
-    - foo
-    - apache.vhosts.standard
-    - apache.mod_wsgi
-    - apache.config
+    - foo.vhost
+    - foo.app
+{% if grains['os'] == 'CentOS' %}
+    - foo.firewall
+{% endif %}
 
 load_db:
-  match: 'djdemo-app*'
+  match: 'web*'
   require:
     - app
   sls:
