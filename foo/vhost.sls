@@ -24,6 +24,7 @@ a2ensite foo-vhost.conf:
   cmd:
     - run
     - require:
+      - pkg: apache
       - file: foo-vhost
 {% endif %}
 
@@ -34,10 +35,14 @@ a2ensite foo-vhost.conf:
 {{ apache.vhostdir }}/welcome.conf:
   file:
     - absent
+    - require:
+      - pkg: apache
 {% endif %}
 
 {% if grains.os_family == 'Debian' %}
 a2dissite default:
   cmd:
     - run
+    - require:
+      - pkg: apache
 {% endif %}
