@@ -39,6 +39,7 @@ foo:
     - require:
       - pkg: git
       - ssh_known_hosts: github.com
+      - virtualenv: foo_venv
 
 foo_pkgs:
   pip:
