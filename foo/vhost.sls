@@ -12,6 +12,7 @@ foo-vhost:
     - managed
     - name: {{ apache.vhostdir }}/foo-vhost.conf
     - source: salt://foo/files/foo-vhost.conf
+    - template: jinja
     - require:
       - pkg: apache
       - pkg: mod_wsgi
