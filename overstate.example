@@ -1,12 +1,5 @@
-sync_mod:
-  match: 'web*'
-  function:
-    saltutil.sync_modules
-
 mysql:
   match: 'web*'
-  require:
-    - sync_mod
   sls:
     - foo.db
 
