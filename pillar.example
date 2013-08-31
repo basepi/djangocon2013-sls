@@ -3,7 +3,7 @@ connection_user: root
 connection_pass: ''
 
 {% set foo_venv = '/var/www/foo' %}
-{% set foo_proj = '/var/www/django-tutorial' %}
+{% set foo_proj = '{0}/django-tutorial'.format(foo_venv) %}
 {% set foo_tmpl = '{0}/templates'.format(foo_proj) %}
 {% set foo_static = '{0}/static'.format(foo_proj) %}
 
