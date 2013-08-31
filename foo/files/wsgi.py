@@ -17,8 +17,6 @@ import os
 import site
 import sys
 
-sys.path.append('{{ salt['pillar.get']('foo:proj') }}')
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ salt['pillar.get']('foo:settings') }}")
 
 {% set foo_sitepackages = salt['cmd.exec_code'](
@@ -27,6 +25,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ salt['pillar.get']('foo:sett
 ) %}
 
 site.addsitedir('{{ foo_sitepackages }}')
+
+sys.path.append('{{ salt['pillar.get']('foo:proj') }}')
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
