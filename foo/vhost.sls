@@ -1,17 +1,40 @@
-{% set etcapache = salt['pillar.get']('dirmap:etcapache', '/etc/httpd') %}
+{% from "apache/map.jinja" import apache with context %}
 
-{{ etcapache }}/conf.d/django-foo.conf:
+include:
+  - apache
+  - apache.mod_wsgi
+
+foo-vhost:
   file:
     - managed
-    - source: salt://apache/files/conf.d/django-foo.conf
+    - name: {{ apache.vhostdir }}/foo-vhost.conf
+    - source: salt://foo/files/foo-vhost.conf
     - require:
       - pkg: apache
-{% if grains.get('os_family', '') == 'RedHat' %}
-      - file: {{ etcapache }}/conf.d/wsgi.conf
-{% endif %}
+      - pkg: apache.mod_wsgi
     - watch_in:
       - service: apache
 
-{{ etcapache }}/conf.d/welcome.conf:
+
+{% if grains.os_family == 'Debian' %}
+a2ensite foo-vhost.conf:
+  cmd:
+    - run
+    - require:
+      - file: foo-vhost
+{% endif %}
+
+
+{# Remove the default site #}
+
+{% if grains.os_family == 'RedHat' %}
+{{ apache.vhostdir }}/welcome.conf:
   file:
     - absent
+{% endif %}
+
+{% if grains.os_family == 'Debian' %}
+a2dissite default:
+  cmd:
+    - run
+{% endif %}
