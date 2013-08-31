@@ -1,0 +1,8 @@
+{% set git = {
+    'Debian': {
+        'pkg': 'git-core',
+    },
+    'RedHat': {
+        'pkg': 'git',
+    },
+}.get(grains.os_family) %}
