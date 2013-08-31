@@ -77,6 +77,7 @@ foo_syncdb:
     - pythonpath: {{ foo_proj }}
     - require:
       - file: foo_settings
+      - pip: foo_pkgs
 
 foo_collectstatic:
   module:
@@ -87,3 +88,4 @@ foo_collectstatic:
     - pythonpath: {{ foo_proj }}
     - require:
       - file: foo_settings
+      - pip: foo_pkgs
