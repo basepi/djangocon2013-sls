@@ -39,9 +39,6 @@ foo:
     - require:
       - pkg: git
       - ssh_known_hosts: github.com
-    - watch_in:
-      - module: foo_syncdb
-      - module: foo_collectstatic
 
 foo_pkgs:
   pip:
@@ -73,16 +70,20 @@ foo_wsgi:
 
 foo_syncdb:
   module:
-    - wait
+    - run
     - name: django.syncdb
     - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
     - pythonpath: {{ foo_proj }}
+    - require:
+      - file: foo_settings
 
 foo_collectstatic:
   module:
-    - wait
+    - run
     - name: django.collectstatic
     - settings_module: {{ foo_settings }}
     - bin_env: {{ foo_venv }}
     - pythonpath: {{ foo_proj }}
+    - require:
+      - file: foo_settings
