@@ -14,7 +14,7 @@ foo-vhost:
     - source: salt://foo/files/foo-vhost.conf
     - require:
       - pkg: apache
-      - pkg: apache.mod_wsgi
+      - pkg: mod_wsgi
     - watch_in:
       - service: apache
 
