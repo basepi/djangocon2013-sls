@@ -1,0 +1,16 @@
+{% set mysql = {
+    'Debian': {
+        'server': 'mysql-server',
+        'client': 'mysql-client',
+        'service': 'mysql',
+        'config': '/etc/mysql/my.cnf',
+        'python': 'python-mysqldb',
+    },
+    'RedHat': {
+        'server': 'mysql-server',
+        'client': 'mysql',
+        'service': 'mysqld',
+        'config': '/etc/my.cnf',
+        'python': 'MySQL-python',
+    },
+}.get(grains.os_family) %}
