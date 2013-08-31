@@ -59,6 +59,8 @@ foo_settings:
     - name: {{ foo_proj }}/foo/settings.py
     - source: salt://foo/files/settings.py
     - template: jinja
+    - require:
+      - git: foo
 
 foo_wsgi:
   file:
@@ -66,6 +68,8 @@ foo_wsgi:
     - name: {{ foo_proj }}/foo/wsgi.py
     - source: salt://foo/files/wsgi.py
     - template: jinja
+    - require:
+      - git: foo
 
 foo_syncdb:
   module:
