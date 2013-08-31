@@ -1,0 +1,8 @@
+{% set virtualenv = {
+    'Debian': {
+        'pkg': 'python-virtualenv',
+    },
+    'RedHat': {
+        'pkg': 'python-virtualenv',
+    },
+}.get(grains.os_family) %}
