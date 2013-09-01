@@ -25,9 +25,8 @@ foodb:
       - pkg: mysql-python
 
 {% for host, ifaces in salt['mine.get']('djangocon-web*', 'network.interfaces').iteritems() %}
-{% set eth0_info = ifaces.get('eth0', {}).get('inet', []) %}
-{% if eth0_info %}
-{% set client_ip = eth0_info[0].get('address', '') %}
+# Get first IP of eth0
+{% set client_ip = ifaces.get('eth0', {}).get('inet', [{}])[0].get('address') %}
 {% if client_ip %}
 foodb_user_{{ client_ip }}:
   mysql_user:
@@ -47,7 +46,6 @@ foodb_grants_{{ client_ip }}:
     - host: {{ client_ip }}
     - require:
       - mysql_user: foodb_user_{{ client_ip }}
-{% endif %}
 {% endif %}
 {% endfor %}
 {% endfor %}
