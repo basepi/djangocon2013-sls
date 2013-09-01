@@ -1,5 +1,5 @@
 mysql:
-  match: 'web*'
+  match: 'db*'
   sls:
     - foo.db
 
