@@ -15,7 +15,7 @@ mysql_remove_testdb:
     - watch_in:
       - service: mysqld
 
-{% for name, db in salt['pillar.get']('foo:DATABASES', {}).items() %}
+{% for name, db in salt['pillar.get']('foo:DATABASES', {}).iteritems() %}
 foodb:
   mysql_database:
     - present
