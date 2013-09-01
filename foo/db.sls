@@ -2,7 +2,13 @@ include:
   - mysql.server
   - mysql.python
 
-{% for name, db in salt['pillar.get']('foo:DATABASES', {}).items() %}
+# Remove the "test" database
+mysql_remove_testdb:
+  mysql_database:
+    - absent
+    - name: test
+
+{% for name, db in salt['pillar.get']('foo:DATABASES', {}).iteritems() %}
 foodb:
   mysql_database:
     - present
