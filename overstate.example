@@ -7,7 +7,7 @@ mine_interfaces:
 mysql:
   match: 'djangocon-db1'
   require:
-    mine_interfaces
+    - mine_interfaces
   sls:
     - foo.db
 
