@@ -1,5 +1,5 @@
 mine_interfaces:
-  match: '*'
+  match: 'djangocon-*'
   function:
     mine.send:
       - network.interfaces
