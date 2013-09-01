@@ -7,6 +7,7 @@ include:
   - pip
   - ssh.server
   - virtualenv
+  - mysql.python
 
 github.com:
   ssh_known_hosts:
@@ -51,14 +52,21 @@ foo_pkgs:
       - pkg: pip
       - virtualenv: foo_venv
 
+# Get salt['mine.get']('djangocon-db1', 'network.interfaces')['djangocon-db1']['eth0']['inet'][0]['address']
+{% set db_server_ip = salt['mine.get']('djangocon-db1', 'network.interfaces').get('djangocon-db1', {}).get('eth0', {}).get('inet', [{}])[0].get('address') %}
+{% if db_server_ip %}
 foo_settings:
   file:
     - managed
     - name: {{ foo_proj }}/foo/settings.py
     - source: salt://foo/files/settings.py
     - template: jinja
+    - context:
+      db_server_ip: {{ db_server_ip }}
     - require:
       - git: foo
+      - pkg: mysql-python
+{% endif %}
 
 foo_wsgi:
   file:
