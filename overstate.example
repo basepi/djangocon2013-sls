@@ -1,18 +1,26 @@
+mine_interfaces:
+  match: '*'
+  function:
+    mine.send:
+      - network.interfaces
+
 mysql:
-  match: 'db*'
+  match: 'djangocon-db1'
+  require:
+    mine_interfaces
   sls:
     - foo.db
 
 app:
-  match: 'web*'
+  match: 'djangocon-web*'
   require:
     - mysql
   sls:
-    - foo.vhost
     - foo.app
+    - foo.vhost
 
 load_db:
-  match: 'web*'
+  match: 'djangocon-web1'
   require:
     - app
   sls:
