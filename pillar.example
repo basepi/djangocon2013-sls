@@ -26,7 +26,6 @@ foo:
       NAME: foodb
       USER: foouser
       PASSWORD: foopass
-      HOST: localhost
       PORT: 3306
   TEMPLATE_DIRS:
     - {{ foo_tmpl }}
