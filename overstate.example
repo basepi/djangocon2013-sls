@@ -1,10 +1,10 @@
 mysql:
-  match: 'web*'
+  match: 'djangocon-singlehost'
   sls:
     - foo.db
 
 app:
-  match: 'web*'
+  match: 'djangocon-singlehost'
   require:
     - mysql
   sls:
@@ -12,7 +12,7 @@ app:
     - foo.app
 
 load_db:
-  match: 'web*'
+  match: 'djangocon-singlehost'
   require:
     - app
   sls:
