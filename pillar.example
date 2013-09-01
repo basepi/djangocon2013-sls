@@ -8,12 +8,12 @@ mine_interval: 5
 connection_user: root
 connection_pass: ''
 
+# Django settings infos
 {% set foo_venv = '/var/www/foo' %}
 {% set foo_proj = '{0}/django-tutorial'.format(foo_venv) %}
 {% set foo_tmpl = '{0}/templates'.format(foo_proj) %}
 {% set foo_static = '{0}/static'.format(foo_proj) %}
 
-# Django settings infos
 foo:
   venv: {{ foo_venv }}
   proj: {{ foo_proj }}
