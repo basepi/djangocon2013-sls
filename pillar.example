@@ -1,3 +1,9 @@
+# Grab IP addresses for multi-host deployments
+mine_functions:
+    network.interfaces: [eth0]
+
+mine_interval: 5
+
 # MySQL connection infos
 connection_user: root
 connection_pass: ''
