@@ -15,7 +15,7 @@ DATABASES = {
         'NAME': '{{ db.get('NAME', '') }}',
         'USER': '{{ db.get('USER', '') }}',
         'PASSWORD': '{{ db.get('PASSWORD', '') }}',
-        'HOST': '{{ salt['mine.get']('db*', 'network.interfaces', ['eth0'])[0].get('ip')[0] }}',
+        'HOST': '{{ salt['mine.get']('djangocon-db1', 'network.interfaces').get('djangocon-db1', {}).get('eth0', {}).get('inet', [{}])[0].get('address') }}',
         'PORT': '{{ db.get('PORT', '') }}',
     },
     {% endfor %}
