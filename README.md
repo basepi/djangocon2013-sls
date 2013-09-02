@@ -10,6 +10,6 @@ Document Format and requires LibreOffice, OpenOffice, or another application
 capable of reading ODF docuements to view.
 
 The application which is deployed using this SLS is the ``polls`` app from the
-Django Tutorial. The views, CSS, etc. which were used can be found
+[Django Tutorial](https://docs.djangoproject.com/en/1.5/intro/tutorial01/). The
+views, CSS, etc. which were used can be found
 [here](https://github.com/terminalmage/django-tutorial).
-
