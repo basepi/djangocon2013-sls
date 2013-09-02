@@ -9,3 +9,7 @@ branch, in a file called ``Salted Django.odp``. This presentation is in Open
 Document Format and requires LibreOffice, OpenOffice, or another application
 capable of reading ODF docuements to view.
 
+The application which is deployed using this SLS is the ``polls`` app from the
+Django Tutorial. The views, CSS, etc. which were used can be found
+[here](https://github.com/terminalmage/django-tutorial).
+
