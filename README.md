@@ -7,7 +7,7 @@ Django' tutorial for DjangoCon 2013.
 The slides for the presentation can be found in the root of the ``master``
 branch, in a file called ``Salted Django.odp``. This presentation is in Open
 Document Format and requires LibreOffice, OpenOffice, or another application
-capable of reading ODF docuements to view. Due to the large number of text
+capable of reading ODF documents to view. Due to the large number of text
 animations in these slides, they are best viewed in presentation mode, rather
 than in the slide editor.
 
