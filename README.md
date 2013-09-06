@@ -19,7 +19,7 @@ CSS, etc. which were used can be found
 The ``overstate.example`` and ``pillar.example`` files contain the OverState
 configuration and pillar data used for the tutorial. As I did not use the git
 external pillar for my pillar data, the ``pillar.example`` was copied to the
-Master under ``/srv/salt/base`` (the location for the Pillar SLS in the
+Master under ``/srv/pillar/base`` (the location for the Pillar SLS in the
 multi-host example was different, see this same file in the ``multihost``
 environment for more info), named it ``django.sls``, and assigned this Pillar
 data to all hosts using the following Pillar top.sls:
@@ -29,3 +29,13 @@ base:
   '*':
     - django
 ```
+
+The corresponding Master configuration needed to enable Pillar (for both the
+single and multi-host demos) is as follows:
+
+```yaml
+pillar_roots:
+  base:
+    - /srv/pillar/base
+  multihost:
+    - /srv/pillar/multihost
