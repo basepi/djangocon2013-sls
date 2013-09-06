@@ -17,8 +17,8 @@ CSS, etc. which were used can be found
 [here](https://github.com/terminalmage/django-tutorial).
 
 The ``overstate.example`` and ``pillar.example`` files contain the OverState
-configuration and pillar data used for the tutorial. As I did not use the git
-external pillar for my pillar data, the ``pillar.example`` was copied to the
+configuration and Pillar data used for the tutorial. As I did not use the git
+external Pillar for my Pillar data, the ``pillar.example`` was copied to the
 Master under ``/srv/pillar/multihost`` (the location for the Pillar SLS in the
 single-host example was different, see this same file in the ``master`` branch
 for more info), named it ``django.sls``, and assigned this Pillar data to all
