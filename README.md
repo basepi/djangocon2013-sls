@@ -20,9 +20,9 @@ The ``overstate.example`` and ``pillar.example`` files contain the OverState
 configuration and pillar data used for the tutorial. As I did not use the git
 external pillar for my pillar data, the ``pillar.example`` was copied to the
 Master under ``/srv/pillar/multihost`` (the location for the Pillar SLS in the
-multi-host example was different, see this same file in the ``multihost``
-environment for more info), named it ``django.sls``, and assigned this Pillar
-data to all hosts using the following Pillar top.sls:
+single-host example was different, see this same file in the ``master`` branch
+for more info), named it ``django.sls``, and assigned this Pillar data to all
+hosts using the following Pillar top.sls:
 
 ```yaml
 base:
