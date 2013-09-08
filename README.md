@@ -16,16 +16,21 @@ Tutorial](https://docs.djangoproject.com/en/1.5/intro/tutorial01/). The views,
 CSS, etc. which were used can be found
 [here](https://github.com/terminalmage/django-tutorial).
 
+
 The ``overstate.example`` and ``pillar.example`` files contain the OverState
-configuration and Pillar data used for the tutorial. As I did not use the git
-external Pillar for my Pillar data, the ``pillar.example`` was copied to the
-Master under ``/srv/pillar/multihost`` (the location for the Pillar SLS in the
-single-host example was different, see this same file in the ``master`` branch
-for more info), named it ``django.sls``, and assigned this Pillar data to all
-hosts using the following Pillar top.sls:
+configuration and Pillar data used for the tutorial. While I used the [git
+fileserver
+backend](http://docs.saltstack.com/ref/file_server/backends.html?highlight=git%20fileserver)
+to serve up the SLS files for the demos, the pillar data was served up in the
+traditional way. I saved the ``pillar.example`` file to the Master under
+``/srv/pillar/multihost/django.sls`` (the location for this file in the
+single-host example is different, see the [README in the ``master``
+branch](https://github.com/terminalmage/djangocon2013-sls/#djangocon2013-sls)
+for more info). This Pillar data was then assigned to all hosts using the
+following Pillar top.sls:
 
 ```yaml
-base:
+multihost:
   '*':
     - django
 ```
